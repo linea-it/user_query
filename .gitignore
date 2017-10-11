@@ -1,0 +1,10 @@
+/env
+
+*.egg-info
+*.pot
+*.py[co]
+.tox/
+__pycache__
+MANIFEST
+
+*.sqlite3
