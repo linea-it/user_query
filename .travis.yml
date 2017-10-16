@@ -1,0 +1,20 @@
+language: python
+python:
+  - "3.5"
+
+install:
+  - cd $TRAVIS_BUILD_DIR
+  - pip install -r requirements.txt
+  - pip install coverage
+  - pip install coveralls
+  - pip install pep8
+
+script:
+  - cd $TRAVIS_BUILD_DIR/user_query
+
+  # Run pep8 on all .py files in all subfolders
+  - num_errors_before=`find . -name \*.py -exec pep8 --exclude=migrations {} + | wc -l`
+  - echo PEP8 Errors [$num_errors_before]
+
+  # Run Tests and generate reports on coveralls
+  - coverage run --source=. --omit='*migrations' manage.py test --verbosity=2
