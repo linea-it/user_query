@@ -1,13 +1,8 @@
 from .models import Query
-from .serializers import UserQuerySerializer
-from rest_framework import generics
+from .serializers import QuerySerializer
+from rest_framework import viewsets
 
 
-class UserQueryList(generics.ListCreateAPIView):
+class QueryViewSet(viewsets.ModelViewSet):
     queryset = Query.objects.all()
-    serializer_class = UserQuerySerializer
-
-
-class UserQueryRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Query.objects.all()
-    serializer_class = UserQuerySerializer
+    serializer_class = QuerySerializer

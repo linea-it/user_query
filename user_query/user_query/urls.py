@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from userquery import views
+from rest_framework.routers import DefaultRouter
+
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+router.register(r'userquery', views.QueryViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
-    url(r'^', include('userquery.urls'))
+    url(r'^', include(router.urls))
 ]

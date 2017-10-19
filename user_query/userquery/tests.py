@@ -8,9 +8,7 @@ class UserQueryAPITestCase(APITestCase):
 
     def test_list_userquery_routes(self):
         route = resolve('/userquery/')
-        self.assertEqual(route.func.__name__, 'UserQueryList')
-        route = resolve('/userquery/1/')
-        self.assertEqual(route.func.__name__, 'UserQueryRetrieveUpdateDestroy')
+        self.assertEqual(route.func.__name__, 'QueryViewSet')
 
     def test_list_userquery(self):
         response = self.client.get('/userquery/')
