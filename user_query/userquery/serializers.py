@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from .models import UserQuery
+from .models import Query
 
 
 class UserQuerySerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
 
     class Meta:
-        model = UserQuery
+        model = Query
         fields = (
             'id',
             'name',
